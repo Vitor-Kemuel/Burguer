@@ -36,6 +36,7 @@ class _UserRegistrationState extends State<UserRegistration> {
         UserModel model = UserModel(
           name: controller.name!.text.trim(),
           cellphone: controller.cellphone!.text,
+          admin: false,
           uid: null,
         );
 
