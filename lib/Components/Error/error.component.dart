@@ -12,8 +12,9 @@ class ErrorPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 109, 109, 109),
-      appBar: const AppBarCustom(
+      appBar: AppBarCustom(
         title: "Error",
+        context: context,
       ),
       body: Center(
         child: Container(

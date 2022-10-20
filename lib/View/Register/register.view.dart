@@ -60,10 +60,12 @@ class _UserRegistrationState extends State<UserRegistration> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Drawer(),
       backgroundColor: Colors.black,
       extendBodyBehindAppBar: true,
-      appBar: const AppBarCustom(
+      appBar: AppBarCustom(
         title: "Cadastro",
+        context: context,
       ),
       body: Container(
         height: MediaQuery.of(context).size.height,
