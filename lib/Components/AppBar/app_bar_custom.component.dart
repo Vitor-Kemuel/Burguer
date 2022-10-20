@@ -5,12 +5,13 @@ class AppBarCustom extends StatelessWidget implements PreferredSizeWidget {
   final String? title;
   final Icon? icon;
   final bool? isDrawer;
+  final BuildContext context;
 
   const AppBarCustom({
     Key? key,
     this.title,
     this.icon,
-    this.isDrawer = false,
+    this.isDrawer = false, required this.context,
   }) : super(key: key);
 
   @override
@@ -20,10 +21,10 @@ class AppBarCustom extends StatelessWidget implements PreferredSizeWidget {
       child: Container(
         decoration: const BoxDecoration(
           color: Colors.black,
-          borderRadius: BorderRadius.only(
-            bottomLeft: Radius.elliptical(500, 40),
-            bottomRight: Radius.elliptical(500, 40),
-          ),
+          // borderRadius: BorderRadius.only(
+          //   bottomLeft: Radius.elliptical(500, 40),
+          //   bottomRight: Radius.elliptical(500, 40),
+          // ),
         ),
         child: AppBar(
           flexibleSpace: Center(
@@ -59,7 +60,7 @@ class AppBarCustom extends StatelessWidget implements PreferredSizeWidget {
               ? Builder(
                   builder: (BuildContext context) {
                     return Container(
-                      margin: const EdgeInsets.fromLTRB(0, 15, 0, 0),
+                      // margin: const EdgeInsets.fromLTRB(0, 15, 0, 0),
                       child: IconButton(
                         icon: const Icon(
                           Icons.menu,
@@ -85,7 +86,7 @@ class AppBarCustom extends StatelessWidget implements PreferredSizeWidget {
                   },
                 ),
           automaticallyImplyLeading: false,
-          centerTitle: true,
+          // centerTitle: true,
           shadowColor: const Color.fromARGB(0, 255, 255, 255),
         ),
       ),
@@ -93,5 +94,7 @@ class AppBarCustom extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(87);
+  Size get preferredSize => Size.fromHeight(
+    MediaQuery.of(context).size.height / 18
+  );
 }
