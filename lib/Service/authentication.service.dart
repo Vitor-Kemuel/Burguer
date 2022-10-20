@@ -17,6 +17,23 @@ class AuthenticationService {
     return _auth.currentUser;
   }
 
+  Future<UserModel> getUserInformation() async {
+    UserModel user = UserModel(
+      name: null,
+      uid: null,
+      cellphone: null,
+      admin: null,
+    );
+    await firestore
+        .collection("users")
+        .doc(userIsLogaded().uid)
+        .get()
+        .then((event) {
+      user = UserModel.fromMap(event.data()!);
+    });
+    return user;
+  }
+
   login(BuildContext context, String email, String password) async {
     try {
       await _auth.signInWithEmailAndPassword(
@@ -52,8 +69,9 @@ class AuthenticationService {
     }
     print(userIsLogaded());
     firestore.collection('users').doc(userIsLogaded().uid).set({
-      "nome": model.name,
+      "name": model.name,
       "cellphone": model.cellphone,
+      "admin": model.admin,
       "uid": userIsLogaded().uid,
     });
     Navigator.of(context).push(
