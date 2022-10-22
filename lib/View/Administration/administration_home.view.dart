@@ -2,23 +2,23 @@ import 'package:burguer/Components/AppBar/app_bar_custom.component.dart';
 import 'package:burguer/Components/Drawer/drawer_custom.dart';
 import 'package:flutter/material.dart';
 
-class HomeView extends StatefulWidget {
-  const HomeView({super.key});
+class AdministrationHomeView extends StatefulWidget {
+  const AdministrationHomeView({super.key});
 
   @override
-  State<HomeView> createState() => _HomeViewState();
+  State<AdministrationHomeView> createState() => _AdministrationHomeViewState();
 }
 
-class _HomeViewState extends State<HomeView> {
+class _AdministrationHomeViewState extends State<AdministrationHomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 41, 41, 41),
       drawer: DrawerCustom(
-        admin: false,
+        admin: true,
       ),
       appBar: AppBarCustom(
-        title: "Cardapio",
+        title: "Administração",
         context: context,
         isDrawer: true,
       ),
