@@ -1,9 +1,13 @@
+import 'package:burguer/Components/Drawer/options_drawer.dart';
 import 'package:burguer/Service/authentication.service.dart';
 import 'package:flutter/material.dart';
 
 class DrawerCustom extends StatefulWidget {
-
-  const DrawerCustom({Key? key}) : super(key: key);
+  final bool admin;
+  const DrawerCustom({
+    Key? key,
+    required this.admin,
+  }) : super(key: key);
 
   @override
   State<DrawerCustom> createState() => _DrawerCustomState();
@@ -12,7 +16,7 @@ class DrawerCustom extends StatefulWidget {
 class _DrawerCustomState extends State<DrawerCustom> {
   AuthenticationService auth = AuthenticationService();
 
-  _logOut(context){
+  _logOut(context) {
     auth.logout(context);
   }
 
@@ -23,23 +27,7 @@ class _DrawerCustomState extends State<DrawerCustom> {
       child: Column(
         children: [
           Expanded(
-            child: ListView(
-              children: <Widget>[
-                const SizedBox(
-                  height: 20,
-                ),
-                Container(
-                  margin: const EdgeInsets.fromLTRB(10, 10, 10, 10),
-                ),
-                const Divider(
-                  indent: 10,
-                  endIndent: 10,
-                ),
-                const SizedBox(
-                  height: 15,
-                ),
-              ],
-            ),
+            child: OptionsDrawer(admin: widget.admin,)
           ),
           ListTile(
             title: Row(
