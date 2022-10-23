@@ -30,7 +30,6 @@ class _NewProductState extends State<NewProduct> {
 
   final TextEditingController _controllerProductName = TextEditingController();
   final TextEditingController _controllerProductPrice = TextEditingController();
-  final TextEditingController _controller = TextEditingController();
 
   void save(BuildContext context) {
     if (formKey.currentState!.validate()) {
@@ -38,6 +37,7 @@ class _NewProductState extends State<NewProduct> {
         category: dropDownCategory,
         name: _controllerProductName.text,
         status: dropDownStatus,
+        price: double.parse(_controllerProductPrice.text),
         uid: null,
       );
 

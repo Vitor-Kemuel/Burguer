@@ -13,7 +13,6 @@ class ProductException implements Exception {
 class ProductService extends ChangeNotifier {
   final firestore = FirebaseFirestore.instance;
   Map<int, Map<String, dynamic>> itens = {};
-  Map<int, Map<String, dynamic>> sizes = {};
 
   registration(ProductModel model, BuildContext context) {
     var uuid = const Uuid();
@@ -23,6 +22,7 @@ class ProductService extends ChangeNotifier {
         "category": model.category,
         "name": model.name,
         "status": model.status,
+        "price": model.price,
         "uid": uidProduct,
       });
     } on FirebaseException catch (e) {
@@ -53,6 +53,7 @@ class ProductService extends ChangeNotifier {
         "category": model.category,
         "name": model.name,
         "status": model.status,
+        "price": model.price,
       });
     } on FirebaseException catch (e) {
       throw Exception(e.code);
