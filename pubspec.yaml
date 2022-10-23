@@ -31,12 +31,13 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  brasil_fields: ^1.4.5
+  cloud_firestore:
+  dropdown_button2: ^1.8.5
   firebase_core: ^1.22.0
   firebase_auth: 
-  cloud_firestore:
   form_field_validator: ^1.1.0
-  brasil_fields: ^1.4.5
-  dropdown_button2: ^1.8.5
+  modal_bottom_sheet: ^2.1.2
   uuid: 3.0.6
 
 
