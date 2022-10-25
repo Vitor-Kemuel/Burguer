@@ -14,6 +14,7 @@ class CartService {
   CartService() {
     _cartService();
   }
+
   _cartService() async {
     if (!await SessionManager().containsKey("cart")) {
       await session.set("cart", "");
@@ -49,5 +50,19 @@ class CartService {
       }
     }
     return CartModel(products: null);
+  }
+
+  Future<double> getTotalPrice()async {
+    var response = await session.get("cart");
+    if (response != "") {
+      double totalPrice = 0;
+      for (var element in response["products"]) {
+        double itemValue = element['product']['price'] * element['amount'];
+        totalPrice += itemValue;
+      }
+      return totalPrice;
+    } else {
+      return 0;
+    }
   }
 }
