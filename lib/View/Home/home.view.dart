@@ -1,7 +1,9 @@
 import 'package:burguer/Components/AppBar/app_bar_custom.component.dart';
 import 'package:burguer/Components/Drawer/drawer_custom.dart';
 import 'package:burguer/Components/productsPage/products_page.component.dart';
+import 'package:burguer/Core/Container/cart.container.dart';
 import 'package:flutter/material.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -38,6 +40,19 @@ class _HomeViewState extends State<HomeView> {
           ProductPage(category: "Sobremesa"),
           ProductPage(category: "Bebida"),
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.red,
+        child: const Icon(
+          Icons.shopping_cart,
+          color: Color.fromARGB(255, 240, 240, 240),
+        ),
+        onPressed: () {
+          showBarModalBottomSheet(
+            context: context,
+            builder: (context) => CartContainer(),
+          );
+        },
       ),
       bottomNavigationBar: Container(
         padding: const EdgeInsets.fromLTRB(15, 15, 15, 10),

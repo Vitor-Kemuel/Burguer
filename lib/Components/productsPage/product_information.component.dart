@@ -2,6 +2,7 @@ import 'package:burguer/Components/Buttons/elevated_button_custom.component.dart
 import 'package:burguer/Components/Buttons/text_button_custom.component.dart';
 import 'package:burguer/Components/TextForm/text_form_custom.component.dart';
 import 'package:burguer/Model/product.model.dart';
+import 'package:burguer/Service/cart.service.dart';
 import 'package:flutter/material.dart';
 
 class ProductInformation extends StatefulWidget {
@@ -13,6 +14,8 @@ class ProductInformation extends StatefulWidget {
 }
 
 class _ProductInformationState extends State<ProductInformation> {
+  CartService cartService = CartService();
+
   int _itemAmount = 1;
 
   void _incrementItemAmount() {
@@ -124,7 +127,10 @@ class _ProductInformationState extends State<ProductInformation> {
                   margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
                   child: ElevatedButtonCustom(
                     textButton: "Adicionar",
-                    onPressed: () {},
+                    onPressed: () {
+                      cartService.addToCart(widget.product, _itemAmount);
+                      Navigator.of(context).pop();
+                    },
                   ),
                 ),
                 const SizedBox(
