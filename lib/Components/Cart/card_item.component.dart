@@ -42,7 +42,7 @@ class CartProduct extends StatelessWidget {
                   child: Container(
                     padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
                     child: Text(
-                      "${cartItem.product!.name!} - ${cartItem.product!.price}",
+                      "${cartItem.product!.name!} - ${(cartItem.product!.price! * cartItem.amount!).toString()}",
                       style: const TextStyle(
                         fontSize: 22,
                         fontWeight: FontWeight.bold,
