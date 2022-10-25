@@ -21,7 +21,7 @@ class CartService {
     }
   }
 
-  addToCart(ProductModel item, int amount) async {
+  void addToCart(ProductModel item, int amount) async {
     CartModel cartModel = CartModel();
     if (await SessionManager().containsKey("cart")) {
       var response = await session.get("cart");
@@ -52,7 +52,7 @@ class CartService {
     return CartModel(products: null);
   }
 
-  Future<double> getTotalPrice()async {
+  Future<double> getTotalPrice() async {
     var response = await session.get("cart");
     if (response != "") {
       double totalPrice = 0;
@@ -64,5 +64,15 @@ class CartService {
     } else {
       return 0;
     }
+  }
+
+  void deleteItem(index) async {
+    CartModel cartModel = CartModel();
+    var response = await session.get("cart");
+    cartModel = CartModel.fromMap(response);
+    cartModel.products!.removeAt(index);
+
+    var jsonString = cartModel.toJson();
+    await session.set("cart", json.encode(jsonString));
   }
 }

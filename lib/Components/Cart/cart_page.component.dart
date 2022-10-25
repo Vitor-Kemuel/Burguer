@@ -58,7 +58,7 @@ class _CartPageState extends State<CartPage> {
                     ],
                   ),
                 ),
-                widget.cart!.products == null
+                widget.cart!.products == null || widget.cart!.products!.isEmpty
                     ? Expanded(
                         child: Center(
                           child: Column(

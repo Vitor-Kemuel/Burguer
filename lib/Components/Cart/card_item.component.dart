@@ -1,18 +1,20 @@
+import 'package:burguer/Core/Container/cart.container.dart';
 import 'package:burguer/Model/cart_item.model.dart';
 import 'package:burguer/Service/cart.service.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_session_manager/flutter_session_manager.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 class CartProduct extends StatelessWidget {
   final CartItemModel cartItem;
   final int index;
-  final CartService cartService = CartService();
 
   CartProduct({
     Key? key,
     required this.cartItem,
     required this.index,
   }) : super(key: key);
+
+  final CartService cartService = CartService();
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +44,7 @@ class CartProduct extends StatelessWidget {
                   child: Container(
                     padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
                     child: Text(
-                      "${cartItem.product!.name!} - ${(cartItem.product!.price! * cartItem.amount!).toString()}",
+                      "${cartItem.product!.name!} - ${(cartItem.product!.price! * cartItem.amount!).toStringAsFixed(2)}",
                       style: const TextStyle(
                         fontSize: 22,
                         fontWeight: FontWeight.bold,
@@ -60,7 +62,12 @@ class CartProduct extends StatelessWidget {
             child: IconButton(
               icon: const Icon(Icons.delete),
               onPressed: () {
-                SessionManager().destroy();
+                cartService.deleteItem(index);
+                Navigator.pop(context);
+                showBarModalBottomSheet(
+                  context: context,
+                  builder: (context) => CartContainer(),
+                );
               },
             ),
           ),
