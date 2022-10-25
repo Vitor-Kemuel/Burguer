@@ -20,4 +20,14 @@ class ProductModel {
     uid = map['uid'];
     price = map['price'];
   }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['category'] = category;
+    data['name'] = name;
+    data['status'] = status;
+    data['uid'] = uid;
+    data['price'] = price;
+    return data;
+  }
 }
