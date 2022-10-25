@@ -1,6 +1,5 @@
 import 'package:burguer/Core/Container/user.container.dart';
 import 'package:burguer/Service/authentication.service.dart';
-import 'package:burguer/View/Home/home.view.dart';
 import 'package:flutter/material.dart';
 import 'package:burguer/View/Login/login.view.dart';
 
