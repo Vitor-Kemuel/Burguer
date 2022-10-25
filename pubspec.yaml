@@ -36,6 +36,7 @@ dependencies:
   dropdown_button2: ^1.8.5
   firebase_core: ^1.22.0
   firebase_auth: 
+  flutter_session_manager: ^1.0.2
   form_field_validator: ^1.1.0
   modal_bottom_sheet: ^2.1.2
   uuid: 3.0.6
