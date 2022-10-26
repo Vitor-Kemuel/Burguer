@@ -112,7 +112,7 @@ class _LoginViewState extends State<LoginView> {
                             padding: EdgeInsets.only(top: 10.0),
                             child: Center(
                               child: CircularProgressIndicator(
-                                color: Colors.amber,
+                                color: Colors.red,
                               ),
                             ),
                           )
