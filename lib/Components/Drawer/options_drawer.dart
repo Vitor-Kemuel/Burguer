@@ -1,3 +1,4 @@
+import 'package:burguer/View/NewAddress/new_address.view.dart';
 import 'package:burguer/View/NewProduct/new_product.view.dart';
 import 'package:flutter/material.dart';
 
@@ -38,7 +39,7 @@ class OptionsDrawer extends StatelessWidget {
             children: [
               ListTile(
                 title: const Text(
-                  "Option 01",
+                  "Novo Endereço",
                   style: TextStyle(
                     color: Color.fromARGB(255, 255, 255, 255),
                   ),
@@ -47,7 +48,13 @@ class OptionsDrawer extends StatelessWidget {
                   Icons.person_outline_rounded,
                   color: Color.fromARGB(255, 255, 255, 255),
                 ),
-                onTap: () {},
+                onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => NewAddress(),
+                    ),
+                  );
+                },
               ),
             ],
           );
