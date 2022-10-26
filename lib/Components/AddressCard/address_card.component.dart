@@ -1,5 +1,7 @@
 import 'package:burguer/Model/address.model.dart';
+import 'package:burguer/Components/EditAddress/edit_address.component.dart';
 import 'package:flutter/material.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 class AddressCard extends StatelessWidget {
   final AddressModel? model;
@@ -68,13 +70,12 @@ class AddressCard extends StatelessWidget {
                 ),
               ),
               onLongPress: () {
-                // Navigator.of(context).push(
-                //   MaterialPageRoute(
-                //     builder: (context) => AddressDataEditing(
-                //       model: model!,
-                //     ),
-                //   ),
-                // );
+                showBarModalBottomSheet(
+                  context: context,
+                  builder: (context) => EditAddress(
+                    model: model!,
+                  ),
+                );
               },
             )
           ],
