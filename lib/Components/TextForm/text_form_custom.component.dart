@@ -12,6 +12,7 @@ class TextFormInputCustom extends StatefulWidget {
   final FormFieldValidator<String>? validator;
   final List<TextInputFormatter>? inputFormatters;
   final String? placeholder;
+  final bool? enable;
 
   const TextFormInputCustom({
     Key? key,
@@ -20,6 +21,7 @@ class TextFormInputCustom extends StatefulWidget {
     this.obscureText = false,
     this.isTextInputSecret = false,
     this.onSaved,
+    this.enable = true,
     this.controller,
     this.validator,
     this.placeholder,
@@ -46,6 +48,7 @@ class _TextFormInputCustomState extends State<TextFormInputCustom> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      enabled: widget.enable,
       onSaved: widget.onSaved,
       controller: widget.controller,
       inputFormatters: widget.inputFormatters,
@@ -57,6 +60,9 @@ class _TextFormInputCustomState extends State<TextFormInputCustom> {
           color: Colors.white,
         ),
         hintText: widget.placeholder ?? '',
+        hintStyle: TextStyle(
+          color: Color.fromARGB(106, 255, 255, 255),
+        ),
         enabledBorder: const OutlineInputBorder(
           borderSide: BorderSide(
             color: Colors.white,
