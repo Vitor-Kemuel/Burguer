@@ -7,11 +7,11 @@ class CartModel {
     this.products,
   });
 
-  CartModel.fromMap(Map<String, dynamic> map) {
+  CartModel.fromJson(Map<String, dynamic> map) {
     if (map['products'] != null) {
       products = <CartItemModel>[];
       map['products'].forEach((v) {
-        products!.add(CartItemModel.fromMap(v));
+        products!.add(CartItemModel.fromJson(v));
       });
     }
   }

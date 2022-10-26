@@ -9,9 +9,9 @@ class CartItemModel {
     required this.amount,
   });
 
-  CartItemModel.fromMap(Map<String, dynamic> map) {
+  CartItemModel.fromJson(Map<String, dynamic> map) {
     product =
-        map['product'] != null ? ProductModel.fromMap(map['product']) : null;
+        map['product'] != null ? ProductModel.fromJson(map['product']) : null;
     amount = map['amount'];
   }
 

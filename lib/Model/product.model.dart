@@ -13,7 +13,7 @@ class ProductModel {
     required this.price,
   });
 
-  ProductModel.fromMap(Map<String, dynamic> map) {
+  ProductModel.fromJson(Map<String, dynamic> map) {
     category = map['category'];
     name = map['name'];
     status = map['status'];

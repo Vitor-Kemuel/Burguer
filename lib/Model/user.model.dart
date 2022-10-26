@@ -11,7 +11,7 @@ class UserModel {
     required this.admin,
   });
 
-  UserModel.fromMap(Map<String, dynamic> map) {
+  UserModel.fromJson(Map<String, dynamic> map) {
     name = map['name'];
     uid = map['uid'];
     cellphone = map["cellphone"];
