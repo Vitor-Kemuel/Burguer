@@ -1,5 +1,5 @@
 import 'package:burguer/Components/AppBar/app_bar_custom.component.dart';
-import 'package:burguer/Components/Drawer/drawer_custom.dart';
+import 'package:burguer/Components/Drawer/drawer_custom.component.dart';
 import 'package:burguer/Components/productsPage/products_page.component.dart';
 import 'package:burguer/Core/Container/cart.container.dart';
 import 'package:flutter/material.dart';
