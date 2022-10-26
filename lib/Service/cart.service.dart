@@ -26,7 +26,7 @@ class CartService {
     if (await SessionManager().containsKey("cart")) {
       var response = await session.get("cart");
       if (response != "") {
-        cartModel = CartModel.fromMap(response);
+        cartModel = CartModel.fromJson(response);
       }
     }
     if (cartModel.products != null) {
@@ -44,7 +44,7 @@ class CartService {
     if (await SessionManager().containsKey("cart")) {
       var response = await session.get("cart");
       if (response != "") {
-        return CartModel.fromMap(await session.get("cart"));
+        return CartModel.fromJson(await session.get("cart"));
       } else {
         return CartModel(products: null);
       }
@@ -69,7 +69,7 @@ class CartService {
   void deleteItem(index) async {
     CartModel cartModel = CartModel();
     var response = await session.get("cart");
-    cartModel = CartModel.fromMap(response);
+    cartModel = CartModel.fromJson(response);
     cartModel.products!.removeAt(index);
 
     var jsonString = cartModel.toJson();

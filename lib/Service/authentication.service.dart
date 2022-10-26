@@ -17,6 +17,10 @@ class AuthenticationService {
     return _auth.currentUser;
   }
 
+  getUid(){
+    return _auth.currentUser!.uid;
+  }
+
   Future<UserModel> getUserInformation() async {
     UserModel user = UserModel(
       name: null,
@@ -29,7 +33,7 @@ class AuthenticationService {
         .doc(userIsLogaded().uid)
         .get()
         .then((event) {
-      user = UserModel.fromMap(event.data()!);
+      user = UserModel.fromJson(event.data()!);
     });
     return user;
   }

@@ -76,7 +76,7 @@ class ProductPage extends StatelessWidget {
                         showBarModalBottomSheet(
                           context: context,
                           builder: (context) => ProductInformation(
-                            product: ProductModel.fromMap(
+                            product: ProductModel.fromJson(
                                 snapshot.data!.docs[index].data()),
                           ),
                         );
