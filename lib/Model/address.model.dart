@@ -1,44 +1,44 @@
 class AddressModel {
-  String? bairro;
-  String? cep;
-  String? cidade;
-  String? complemento;
-  String? logradouro;
-  String? nome;
-  String? numero;
+  String? district;
+  String? zipCode;
+  String? city;
+  String? complement;
+  String? publicPlace;
+  String? name;
+  String? number;
   String? uid;
 
   AddressModel({
-    required this.bairro,
-    required this.cep,
-    required this.cidade,
-    required this.complemento,
-    required this.logradouro,
-    required this.nome,
-    required this.numero,
+    required this.district,
+    required this.zipCode,
+    required this.city,
+    required this.complement,
+    required this.publicPlace,
+    required this.name,
+    required this.number,
     required this.uid,
   });
 
   AddressModel.fromJson(Map<String, dynamic> map) {
-    bairro = map['bairro'];
-    cep = map['cep'];
-    cidade = map['cidade'];
-    complemento = map['complemento'];
-    logradouro = map['logradouro'];
-    nome = map["nome"];
-    numero = map['numero'];
+    district = map['district'];
+    zipCode = map['zipCode'];
+    city = map['city'];
+    complement = map['complement'];
+    publicPlace = map['publicPlace'];
+    name = map["name"];
+    number = map['number'];
     uid = map['uid'];
   }
 
-    Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data["bairro"] = bairro;
-    data["cep"] = cep;
-    data["cidade"] = cidade;
-    data["complemento"] = complemento;
-    data["logradouro"] = logradouro;
-    data["nome"] = nome;
-    data["numero"] = numero;
+    data["district"] = district;
+    data["zipCode"] = zipCode;
+    data["city"] = city;
+    data["complement"] = complement;
+    data["publicPlace"] = publicPlace;
+    data["name"] = name;
+    data["number"] = number;
     data["uid"] = uid;
     return data;
   }
