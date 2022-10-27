@@ -44,13 +44,13 @@ class _NewAddress extends State<NewAddress> {
         try {
           setState(() => registerIsLoading = true);
           AddressModel model = AddressModel(
-            bairro: controller.district!.text,
-            cep: controller.cep!.text,
-            cidade: controller.city!.text,
-            complemento: controller.complement!.text,
-            logradouro: controller.street!.text,
-            nome: controller.name!.text,
-            numero: controller.number!.text,
+            district: controller.district!.text,
+            zipCode: controller.cep!.text,
+            city: controller.city!.text,
+            complement: controller.complement!.text,
+            publicPlace: controller.street!.text,
+            name: controller.name!.text,
+            number: controller.number!.text,
             uid: null,
           );
           AddressService().registration(model, context);

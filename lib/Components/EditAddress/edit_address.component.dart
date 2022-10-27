@@ -41,14 +41,14 @@ class _EditAddress extends State<EditAddress> {
   void initState() {
     super.initState();
     setState(() {
-      controller.district!.text = widget.model.bairro!;
-      controller.cep!.text = widget.model.cep!;
-      controller.city!.text = widget.model.cidade!;
-      controller.complement!.text = widget.model.complemento!;
-      controller.street!.text = widget.model.logradouro!;
-      controller.name!.text = widget.model.nome!;
-      controller.number!.text = widget.model.numero!;
-      cepSearched = widget.model.cep!;
+      controller.district!.text = widget.model.district!;
+      controller.cep!.text = widget.model.zipCode!;
+      controller.city!.text = widget.model.city!;
+      controller.complement!.text = widget.model.complement!;
+      controller.street!.text = widget.model.publicPlace!;
+      controller.name!.text = widget.model.name!;
+      controller.number!.text = widget.model.number!;
+      cepSearched = widget.model.zipCode!;
     });
   }
 
@@ -58,13 +58,13 @@ class _EditAddress extends State<EditAddress> {
         try {
           setState(() => registerIsLoading = true);
           AddressModel newModel = AddressModel(
-            bairro: controller.district!.text,
-            cep: controller.cep!.text,
-            cidade: controller.city!.text,
-            complemento: controller.complement!.text,
-            logradouro: controller.street!.text,
-            nome: controller.name!.text,
-            numero: controller.number!.text,
+            district: controller.district!.text,
+            zipCode: controller.cep!.text,
+            city: controller.city!.text,
+            complement: controller.complement!.text,
+            publicPlace: controller.street!.text,
+            name: controller.name!.text,
+            number: controller.number!.text,
             uid: widget.model.uid,
           );
           AddressService().update(newModel, context);

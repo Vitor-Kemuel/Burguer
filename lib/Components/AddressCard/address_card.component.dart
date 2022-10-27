@@ -34,7 +34,7 @@ class AddressCard extends StatelessWidget {
             Container(
               margin: const EdgeInsets.fromLTRB(0, 10, 0, 0),
               child: Text(
-                model!.nome!,
+                model!.name!,
                 style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.w900,
@@ -54,7 +54,7 @@ class AddressCard extends StatelessWidget {
                 size: 32.0,
               ),
               title: Text(
-                "${model!.logradouro}, ${model!.numero}",
+                "${model!.publicPlace}, ${model!.number}",
                 style: const TextStyle(
                   fontSize: 20.0,
                   color: Colors.white,
@@ -62,7 +62,7 @@ class AddressCard extends StatelessWidget {
                 ),
               ),
               subtitle: Text(
-                "${model!.bairro} - ${model!.cidade}",
+                "${model!.district} - ${model!.city}",
                 style: const TextStyle(
                   fontSize: 16.0,
                   color: Colors.white,

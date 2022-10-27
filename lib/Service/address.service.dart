@@ -25,13 +25,13 @@ class AddressService extends ChangeNotifier {
           .collection("address")
           .doc(uid)
           .set({
-        "cep": model.cep,
-        "logradouro": model.logradouro,
-        "numero": model.numero,
-        "complemento": model.complemento,
-        "bairro": model.bairro,
-        "nome": model.nome,
-        "cidade": model.cidade,
+        "district": model.district,
+        "zipCode": model.zipCode,
+        "city": model.city,
+        "complement": model.complement,
+        "publicPlace": model.publicPlace,
+        "name": model.name,
+        "number": model.number,
         "uid": uid,
       });
     } on FirebaseException catch (e) {
@@ -49,13 +49,13 @@ class AddressService extends ChangeNotifier {
           .collection("address")
           .doc(model.uid)
           .update({
-        "cep": model.cep,
-        "logradouro": model.logradouro,
-        "numero": model.numero,
-        "complemento": model.complemento,
-        "bairro": model.bairro,
-        "nome": model.nome,
-        "cidade": model.cidade,
+        "district": model.district,
+        "zipCode": model.zipCode,
+        "city": model.city,
+        "complement": model.complement,
+        "publicPlace": model.publicPlace,
+        "name": model.name,
+        "number": model.number,
         "uid": model.uid
       });
     } on FirebaseException catch (e) {
