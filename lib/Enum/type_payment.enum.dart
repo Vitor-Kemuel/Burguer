@@ -1,0 +1,1 @@
+enum TypePayment { money, cardCredit }
