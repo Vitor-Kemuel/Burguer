@@ -1,5 +1,6 @@
 import 'package:burguer/Components/Buttons/text_button_custom.component.dart';
 import 'package:burguer/Components/Cart/cart_list.component.dart';
+import 'package:burguer/Core/Container/order_to_confirm.container.dart';
 import 'package:burguer/Model/cart.model.dart';
 import 'package:burguer/Service/cart.service.dart';
 import 'package:flutter/material.dart';
@@ -115,7 +116,11 @@ class _CartPageState extends State<CartPage> {
                 buttonText: "Finalizar",
                 onPressed: () {
                   if (widget.cart!.products != null) {
-                    // Navegar para a tela de confirmação
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) =>  OrderToConfirmContainer(),
+                      ),
+                    );
                   } else {
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(
