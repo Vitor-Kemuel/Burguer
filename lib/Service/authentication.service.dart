@@ -17,7 +17,7 @@ class AuthenticationService {
     return _auth.currentUser;
   }
 
-  getUid(){
+  getUid() {
     return _auth.currentUser!.uid;
   }
 
@@ -91,5 +91,12 @@ class AuthenticationService {
       '/',
       (Route<dynamic> route) => false,
     );
+  }
+
+  getInformationUser() {
+    return firestore
+        .collection("users")
+        .where("uid", isEqualTo: _auth.currentUser!.uid)
+        .snapshots();
   }
 }
