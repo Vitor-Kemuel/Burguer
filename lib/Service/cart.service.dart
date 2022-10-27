@@ -75,4 +75,8 @@ class CartService {
     var jsonString = cartModel.toJson();
     await session.set("cart", json.encode(jsonString));
   }
+
+  void deleteCart(){
+    session.remove("cart");
+  }
 }
