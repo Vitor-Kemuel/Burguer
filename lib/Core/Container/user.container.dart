@@ -1,5 +1,5 @@
 import 'package:burguer/Components/Error/error.component.dart';
-import 'package:burguer/Components/LoadingPage/loading_page.component.dart';
+import 'package:burguer/Components/Loading/loading_page.component.dart';
 import 'package:burguer/Model/user.model.dart';
 import 'package:burguer/Service/authentication.service.dart';
 import 'package:burguer/View/Administration/administration_home.view.dart';

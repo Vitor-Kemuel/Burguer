@@ -1,6 +1,6 @@
 import 'package:burguer/Components/Cart/cart_page.component.dart';
 import 'package:burguer/Components/Error/error.component.dart';
-import 'package:burguer/Components/LoadingPage/loading_page.component.dart';
+import 'package:burguer/Components/Loading/loading_page.component.dart';
 import 'package:burguer/Model/cart.model.dart';
 import 'package:burguer/Service/cart.service.dart';
 import 'package:flutter/material.dart';

@@ -1,5 +1,5 @@
 import 'package:burguer/Components/Error/error.component.dart';
-import 'package:burguer/Components/LoadingPage/loading_page.component.dart';
+import 'package:burguer/Components/Loading/loading_page.component.dart';
 import 'package:burguer/Model/order_to_confirm.model.dart';
 import 'package:burguer/Service/order.service.dart';
 import 'package:burguer/View/ConfirmOrder/confirm_order.view.dart';
