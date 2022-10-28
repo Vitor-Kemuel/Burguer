@@ -1,5 +1,5 @@
 import 'package:burguer/View/Address/address.view.dart';
-import 'package:burguer/View/NewProduct/new_product.view.dart';
+import 'package:burguer/View/Products/products.view.dart';
 import 'package:flutter/material.dart';
 
 class OptionsDrawer extends StatelessWidget {
@@ -28,9 +28,13 @@ class OptionsDrawer extends StatelessWidget {
                 onTap: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
-                      builder: (context) => const NewProduct(),
+                      builder: (context) => ProductAdministration(),
                     ),
                   );
+                  // showBarModalBottomSheet(
+                  //   context: context,
+                  //   builder: (context) => NewProduct(),
+                  // );
                 },
               ),
             ],
