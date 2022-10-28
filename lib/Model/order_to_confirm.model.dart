@@ -4,14 +4,14 @@ import 'package:burguer/Model/user.model.dart';
 
 class OrderToConfirm {
   List<AddressModel>? address;
-  List<CartItemModel>? itens;
+  List<CartItemModel>? items;
   double? valueDelivery;
   double? valueTotal;
   UserModel? user;
 
   OrderToConfirm({
     this.address,
-    this.itens,
+    this.items,
     this.valueDelivery,
     this.valueTotal,
     this.user
@@ -19,7 +19,7 @@ class OrderToConfirm {
 
   OrderToConfirm.fromJson(Map<String, dynamic> map) {
     address = map["address"];
-    itens = map["itens"];
+    items = map["items"];
     valueDelivery = map["valueDelivery"];
     valueTotal = map["valueTotal"];
     user = map["user"];

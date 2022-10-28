@@ -259,7 +259,7 @@ class _ConfirmOrderState extends State<ConfirmOrder> {
                     moneyChange: moneyController.text,
                     cardFlag: cardFlagSelected,
                     cardPayment: cardPaymentSelected,
-                    itens: widget.orderToConfirm.itens,
+                    items: widget.orderToConfirm.items,
                   );
 
                   OrderService().save(model, context);
