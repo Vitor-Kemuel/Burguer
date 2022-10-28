@@ -1,7 +1,7 @@
 import 'package:burguer/Components/AppBar/app_bar_custom.component.dart';
 import 'package:burguer/Components/Buttons/text_button_custom.component.dart';
 import 'package:burguer/Components/Dropdown/dropdownFormFieldCustom.component.dart';
-import 'package:burguer/Components/NewAddress/new_address.component.dart';
+import 'package:burguer/Components/AddressForm/address_form.component.dart';
 import 'package:burguer/Components/RadioButton/radio_button.component.dart';
 import 'package:burguer/Components/TextForm/text_form_custom.component.dart';
 import 'package:burguer/Components/ValueOrder/InformationValueOrder.component.dart';
@@ -118,7 +118,7 @@ class _ConfirmOrderState extends State<ConfirmOrder> {
                   onPressed: () {
                     showBarModalBottomSheet(
                       context: context,
-                      builder: (context) => NewAddress(),
+                      builder: (context) => AddressForm(),
                     );
                   },
                 ),

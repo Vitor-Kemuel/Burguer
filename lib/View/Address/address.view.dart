@@ -2,7 +2,7 @@ import 'package:burguer/Components/AddressCard/address_card.component.dart';
 import 'package:burguer/Components/AppBar/app_bar_custom.component.dart';
 import 'package:burguer/Model/address.model.dart';
 import 'package:burguer/Service/address.service.dart';
-import 'package:burguer/Components/NewAddress/new_address.component.dart';
+import 'package:burguer/Components/AddressForm/address_form.component.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
@@ -51,7 +51,7 @@ class _AdressesState extends State<Adresses> {
         onPressed: () {
           showBarModalBottomSheet(
             context: context,
-            builder: (context) => NewAddress(),
+            builder: (context) => AddressForm(),
           );
         },
       ),

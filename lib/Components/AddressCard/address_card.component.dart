@@ -1,5 +1,5 @@
+import 'package:burguer/Components/AddressForm/address_form.component.dart';
 import 'package:burguer/Model/address.model.dart';
-import 'package:burguer/Components/EditAddress/edit_address.component.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
@@ -72,7 +72,7 @@ class AddressCard extends StatelessWidget {
               onLongPress: () {
                 showBarModalBottomSheet(
                   context: context,
-                  builder: (context) => EditAddress(
+                  builder: (context) => AddressForm(
                     model: model!,
                   ),
                 );

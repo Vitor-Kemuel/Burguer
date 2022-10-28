@@ -7,31 +7,30 @@ import 'package:burguer/Service/address.service.dart';
 import 'package:burguer/Service/cep.service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
 import 'package:brasil_fields/brasil_fields.dart';
 
-class EditAddress extends StatefulWidget {
-  final AddressModel model;
-  const EditAddress({
+class AddressForm extends StatefulWidget {
+  final AddressModel? model;
+  const AddressForm({
     Key? key,
-    required this.model,
+    this.model,
   }) : super(key: key);
 
   @override
-  State<EditAddress> createState() => _EditAddress();
+  State<AddressForm> createState() => _AddressForm();
 }
 
-class _EditAddress extends State<EditAddress> {
+class _AddressForm extends State<AddressForm> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   AddressControllerService controller = AddressControllerService();
 
   bool enableStreet = false;
-  bool enableNumber = true;
-  bool enableComplement = true;
+  bool enableNumber = false;
+  bool enableComplement = false;
   bool enableDistrict = false;
   bool enableCity = false;
-  bool enableName = true;
+  bool enableName = false;
   String cepSearched = "";
 
   bool isLoading = false;
@@ -40,24 +39,36 @@ class _EditAddress extends State<EditAddress> {
   @override
   void initState() {
     super.initState();
-    setState(() {
-      controller.district!.text = widget.model.district!;
-      controller.cep!.text = widget.model.zipCode!;
-      controller.city!.text = widget.model.city!;
-      controller.complement!.text = widget.model.complement!;
-      controller.street!.text = widget.model.publicPlace!;
-      controller.name!.text = widget.model.name!;
-      controller.number!.text = widget.model.number!;
-      cepSearched = widget.model.zipCode!;
-    });
+    if (widget.model != null) {
+      setState(() {
+        controller.district!.text = widget.model!.district!;
+        controller.cep!.text = widget.model!.zipCode!;
+        controller.city!.text = widget.model!.city!;
+        controller.complement!.text = widget.model!.complement!;
+        controller.street!.text = widget.model!.publicPlace!;
+        controller.name!.text = widget.model!.name!;
+        controller.number!.text = widget.model!.number!;
+        cepSearched = widget.model!.zipCode!;
+
+        enableNumber = true;
+        enableComplement = true;
+        enableName = true;
+      });
+    }
   }
 
   void save(BuildContext context) async {
-    if (cepSearched == controller.cep!.text) {
+    if (cepSearched.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text("É necessário buscar por um CEP primeiro"),
+        ),
+      );
+    } else if (cepSearched == controller.cep!.text) {
       if (formKey.currentState!.validate()) {
         try {
           setState(() => registerIsLoading = true);
-          AddressModel newModel = AddressModel(
+          AddressModel address = AddressModel(
             district: controller.district!.text,
             zipCode: controller.cep!.text,
             city: controller.city!.text,
@@ -65,9 +76,13 @@ class _EditAddress extends State<EditAddress> {
             publicPlace: controller.street!.text,
             name: controller.name!.text,
             number: controller.number!.text,
-            uid: widget.model.uid,
+            uid: widget.model == null ? null : widget.model!.uid,
           );
-          AddressService().update(newModel, context);
+          if (widget.model == null) {
+            AddressService().registration(address, context);
+          } else {
+            AddressService().update(address, context);
+          }
         } on AddressException catch (e) {
           setState(() => registerIsLoading = false);
           ScaffoldMessenger.of(context).showSnackBar(
@@ -120,9 +135,9 @@ class _EditAddress extends State<EditAddress> {
         children: [
           Container(
             padding: const EdgeInsets.fromLTRB(15, 20, 15, 20),
-            child: const Text(
-              "Editar endereço",
-              style: TextStyle(
+            child: Text(
+              widget.model == null ? "Novo endereço" : "Editar endereço",
+              style: const TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.w700,
                 color: Color.fromARGB(255, 240, 240, 240),
