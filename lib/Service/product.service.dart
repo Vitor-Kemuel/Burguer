@@ -23,6 +23,7 @@ class ProductService extends ChangeNotifier {
         "name": model.name,
         "status": model.status,
         "price": model.price,
+        "note": model.note,
         "uid": uidProduct,
       });
     } on FirebaseException catch (e) {
@@ -54,6 +55,7 @@ class ProductService extends ChangeNotifier {
         "name": model.name,
         "status": model.status,
         "price": model.price,
+        "note": model.note,
       });
     } on FirebaseException catch (e) {
       throw Exception(e.code);

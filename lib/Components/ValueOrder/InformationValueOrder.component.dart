@@ -66,7 +66,7 @@ class InformationValueOrder extends StatelessWidget {
                 ),
               ),
               Text(
-                UtilBrasilFields.obterReal((valueTotal! + 1.50)),
+                UtilBrasilFields.obterReal((valueTotal! + 0)),
                 style: const TextStyle(
                   fontSize: 20.0,
                   fontWeight: FontWeight.bold,

@@ -4,6 +4,7 @@ class ProductModel {
   String? status;
   String? uid;
   double? price;
+  String? note;
 
   ProductModel({
     required this.category,
@@ -11,6 +12,7 @@ class ProductModel {
     required this.status,
     required this.uid,
     required this.price,
+    required this.note,
   });
 
   ProductModel.fromJson(Map<String, dynamic> map) {
@@ -19,6 +21,7 @@ class ProductModel {
     status = map['status'];
     uid = map['uid'];
     price = map['price'];
+    note = map['note'];
   }
 
   Map<String, dynamic> toJson() {
@@ -28,6 +31,7 @@ class ProductModel {
     data['status'] = status;
     data['uid'] = uid;
     data['price'] = price;
+    data['note'] = note;
     return data;
   }
 }
