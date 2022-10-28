@@ -1,5 +1,6 @@
 import 'package:burguer/Components/AppBar/app_bar_custom.component.dart';
 import 'package:burguer/Components/Drawer/drawer_custom.component.dart';
+import 'package:burguer/Components/OrderPage/order_page.component.dart';
 import 'package:flutter/material.dart';
 
 class AdministrationHomeView extends StatefulWidget {
@@ -33,9 +34,16 @@ class _AdministrationHomeViewState extends State<AdministrationHomeView> {
         },
         controller: _pageController,
         children: [
-          Container(color: Colors.red,),
-          Container(color: Colors.green,),
-          Container(color: Colors.blue,),
+          OrderPage(
+            status: "enviado",
+          ),
+          OrderPage(
+            status: "aceito",
+          ),
+          OrderPage(
+            status: "entregue",
+          ),
+
         ],
       ),
       bottomNavigationBar: Container(

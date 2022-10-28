@@ -3,6 +3,7 @@ import 'package:burguer/Model/address.model.dart';
 import 'package:burguer/Model/cart_item.model.dart';
 import 'package:burguer/Model/order.model.dart';
 import 'package:burguer/Model/order_to_confirm.model.dart';
+import 'package:burguer/Model/product.model.dart';
 import 'package:burguer/Model/user.model.dart';
 import 'package:burguer/Service/authentication.service.dart';
 import 'package:burguer/Service/cart.service.dart';
@@ -25,12 +26,6 @@ class OrderService {
         "userName": model.userName,
         "userEmail": model.userEmail,
         "userCellPhone": model.userCellPhone,
-        "publicPlace": model.address!.publicPlace,
-        "number": model.address!.number,
-        "district": model.address!.district,
-        "zipCode": model.address!.zipCode,
-        "city": model.address!.city,
-        "complement": model.address!.complement,
         "valueTotal": model.valueTotal,
         "valueDelivery": model.valueDelivery,
         "dateOrder": model.dateOrder,
@@ -47,8 +42,24 @@ class OrderService {
             : '',
         "reasonDeclined": model.reasonDenied,
       });
+      var uuidAddress = Uuid().v1();
+      await firestore
+          .collection('orders')
+          .doc(uuidOrder)
+          .collection("address")
+          .doc(uuidAddress)
+          .set({
+        "district": model.address!.district,
+        "zipCode": model.address!.zipCode,
+        "city": model.address!.city,
+        "complement": model.address!.complement,
+        "publicPlace": model.address!.publicPlace,
+        "name": model.address!.name,
+        "number": model.address!.number,
+        "uid": uuidAddress,
+      });
 
-      for (var i = 0; i < model.itens!.length; i++) {
+      for (var i = 0; i < model.items!.length; i++) {
         var uuidItems = const Uuid().v1();
         await firestore
             .collection('orders')
@@ -57,9 +68,9 @@ class OrderService {
             .doc(uuidItems)
             .set(
           {
-            "price": model.itens![i].product!.price,
-            "amount": model.itens![i].amount.toString(),
-            "product": model.itens![i].product!.name,
+            "price": model.items![i].product!.price,
+            "amount": model.items![i].amount.toString(),
+            "product": model.items![i].product!.name,
             "uid": uuidItems,
           },
         );
@@ -67,6 +78,76 @@ class OrderService {
       CartService().deleteCart();
       Navigator.of(context).pop();
       Navigator.of(context).pop();
+    } on FirebaseException catch (ex) {
+      throw Exception(ex.message);
+    }
+  }
+
+  Future<OrderModel> getOrderInformations(uid) async {
+    try {
+      Map<String, dynamic> orderMap = {};
+      Map<String, dynamic> addressMap = {};
+      List<Map<String, dynamic>> itemsMap = [];
+
+      await firestore.collection('orders').doc(uid).get().then((value) {
+        orderMap = value.data()!;
+      });
+      await firestore
+          .collection('orders')
+          .doc(uid)
+          .collection("address")
+          .get()
+          .then((value) {
+        addressMap = value.docs[0].data();
+      });
+
+      await firestore
+          .collection('orders')
+          .doc(uid)
+          .collection("items")
+          .get()
+          .then((value) {
+        for (var element in value.docs) {
+          itemsMap.add(element.data());
+        }
+      });
+      List<CartItemModel> items = [];
+      for (var element in itemsMap) {
+        items.add(
+          CartItemModel(
+            product: ProductModel(
+              price: element["price"],
+              name: element["product"],
+              uid: null,
+              category: null,
+              note: null,
+              status: null,
+            ),
+            amount: int.parse(element["amount"]),
+          ),
+        );
+      }
+      orderMap["address"] = addressMap;
+      orderMap["items"] = items;
+
+      if (orderMap["dateOrder"] != null) {
+        orderMap["dateOrder"] = orderMap["dateOrder"].toDate();
+      } else {
+        orderMap["dateOrder"] = null;
+      }
+      if (orderMap["dateOrderAccepted"] != null) {
+        orderMap["dateOrderAccepted"] = orderMap["dateOrderAccepted"].toDate();
+      } else {
+        orderMap["dateOrderAccepted"] = null;
+      }
+      if (orderMap["dateOrderSent"] != null) {
+        orderMap["dateOrderSent"] = orderMap["dateOrderSent"].toDate();
+      } else {
+        orderMap["dateOrderSent"] = null;
+      }
+      OrderModel order = OrderModel.fromJson(orderMap);
+      
+      return order;
     } on FirebaseException catch (ex) {
       throw Exception(ex.message);
     }
@@ -80,8 +161,8 @@ class OrderService {
         .snapshots();
   }
 
-  getMyOrderItens(String uid) async {
-    List<Map<String, dynamic>> orderItens = [];
+  getMyOrderitems(String uid) async {
+    List<Map<String, dynamic>> orderitems = [];
     await firestore
         .collection('orders')
         .doc(uid)
@@ -89,7 +170,7 @@ class OrderService {
         .get()
         .then((value) {
       for (var i = 0; i < value.docs.length; i++) {
-        orderItens[i] = value.docs[i].data();
+        orderitems[i] = value.docs[i].data();
       }
     });
   }
@@ -158,7 +239,7 @@ class OrderService {
     );
     return OrderToConfirm(
       address: adresses,
-      itens: items!,
+      items: items!,
       valueTotal: totalPrice,
       valueDelivery: 0,
       user: user,
