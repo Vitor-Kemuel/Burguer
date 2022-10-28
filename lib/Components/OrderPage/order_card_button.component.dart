@@ -32,7 +32,7 @@ class OrderCardButton extends StatelessWidget {
                 Text(
                   "id - ${order.id}",
                   style: const TextStyle(
-                    color: Color.fromARGB(100, 0, 0, 0),
+                    color: Color.fromARGB(99, 255, 255, 255),
                   ),
                 ),
               ],
@@ -48,7 +48,7 @@ class OrderCardButton extends StatelessWidget {
                   Text(
                     DateFormat("dd/MM/yy").format(order.dateOrder!),
                     style: const TextStyle(
-                      color: Color.fromARGB(255, 0, 0, 0),
+                      color: Color.fromARGB(255, 255, 255, 255),
                     ),
                   ),
                   Text(
@@ -56,7 +56,7 @@ class OrderCardButton extends StatelessWidget {
                       order.valueTotal! + order.valueDelivery!,
                     ),
                     style: const TextStyle(
-                      color: Color.fromARGB(255, 0, 0, 0),
+                      color: Color.fromARGB(255, 255, 255, 255),
                     ),
                   ),
                 ],
@@ -68,14 +68,14 @@ class OrderCardButton extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Container(
+                SizedBox(
                   width: MediaQuery.of(context).size.width / 1.3,
-                  // child: Text(
-                  //   "${order!["endereco"]}, ${order!["numero"]}, ${order!["bairro"]}",
-                  //   style: const TextStyle(
-                  //     color: Color.fromARGB(255, 0, 0, 0),
-                  //   ),
-                  // ),
+                  child: Text(
+                    "${order.address!.publicPlace}, ${order.address!.number}, ${order.address!.district}",
+                    style: const TextStyle(
+                      color: Color.fromARGB(255, 255, 255, 255),
+                    ),
+                  ),
                 )
               ],
             ),
@@ -89,12 +89,12 @@ class OrderCardButton extends StatelessWidget {
                   children: [
                     const Icon(
                       Icons.bookmark_add_outlined,
-                      color: Color.fromARGB(255, 0, 100, 0),
+                      color: Color.fromARGB(255, 0, 248, 0),
                     ),
                     Text(
                       DateFormat("HH:mm").format(order.dateOrder!),
                       style: const TextStyle(
-                        color: Color.fromARGB(255, 0, 100, 0),
+                        color: Color.fromARGB(255, 0, 248, 0),
                       ),
                     ),
                   ],
@@ -106,14 +106,14 @@ class OrderCardButton extends StatelessWidget {
                     ? const Expanded(
                         child: LinearProgressIndicator(
                           color: Colors.red,
-                          backgroundColor: Color.fromARGB(100, 74, 44, 82),
+                          backgroundColor: Color.fromARGB(101, 244, 67, 54),
                           value: 1,
                         ),
                       )
                     : const Expanded(
                         child: LinearProgressIndicator(
                           color: Colors.red,
-                          backgroundColor: Color.fromARGB(100, 74, 44, 82),
+                          backgroundColor: Color.fromARGB(101, 244, 67, 54),
                         ),
                       ),
                 const SizedBox(
@@ -124,7 +124,7 @@ class OrderCardButton extends StatelessWidget {
                         children: [
                           const Icon(
                             Icons.verified_outlined,
-                            color: Color.fromARGB(255, 0, 100, 0),
+                            color: Color.fromARGB(255, 0, 248, 0),
                           ),
                           Text(
                             order.dateOrderAccepted != null
@@ -132,7 +132,7 @@ class OrderCardButton extends StatelessWidget {
                                     order.dateOrderAccepted!)
                                 : "xx:xx",
                             style: const TextStyle(
-                              color: Color.fromARGB(255, 0, 100, 0),
+                              color: Color.fromARGB(255, 0, 248, 0),
                             ),
                           ),
                         ],
@@ -141,7 +141,7 @@ class OrderCardButton extends StatelessWidget {
                         children: [
                           const Icon(
                             Icons.verified_outlined,
-                            color: Color.fromARGB(255, 0, 0, 0),
+                            color: Color.fromARGB(255, 255, 255, 255),
                           ),
                           Text(
                             order.dateOrderAccepted != null
@@ -149,7 +149,7 @@ class OrderCardButton extends StatelessWidget {
                                     order.dateOrderAccepted!)
                                 : "xx:xx",
                             style: const TextStyle(
-                              color: Color.fromARGB(255, 0, 0, 0),
+                              color: Color.fromARGB(255, 255, 255, 255),
                             ),
                           ),
                         ],
@@ -162,14 +162,14 @@ class OrderCardButton extends StatelessWidget {
                         ? const Expanded(
                             child: LinearProgressIndicator(
                               color: Colors.red,
-                              backgroundColor: Color.fromARGB(100, 74, 44, 82),
+                              backgroundColor: Color.fromARGB(101, 244, 67, 54),
                               value: 1,
                             ),
                           )
                         : const Expanded(
                             child: LinearProgressIndicator(
                               color: Colors.red,
-                              backgroundColor: Color.fromARGB(100, 74, 44, 82),
+                              backgroundColor: Color.fromARGB(101, 244, 67, 54),
                             ),
                           )
                     : Expanded(
@@ -184,7 +184,7 @@ class OrderCardButton extends StatelessWidget {
                             children: [
                               const Icon(
                                 Icons.delivery_dining_outlined,
-                                color: Color.fromARGB(255, 0, 100, 0),
+                                color: Color.fromARGB(255, 0, 248, 0),
                               ),
                               Text(
                                 order.dateOrderSent != null
@@ -192,7 +192,7 @@ class OrderCardButton extends StatelessWidget {
                                         order.dateOrderSent!)
                                     : "xx:xx",
                                 style: const TextStyle(
-                                  color: Color.fromARGB(255, 0, 100, 0),
+                                  color: Color.fromARGB(255, 0, 248, 0) ,
                                 ),
                               )
                             ],
@@ -201,7 +201,7 @@ class OrderCardButton extends StatelessWidget {
                             children: [
                               const Icon(
                                 Icons.delivery_dining_outlined,
-                                color: Color.fromARGB(255, 0, 0, 0),
+                                color: Color.fromARGB(255, 255, 255, 255),
                               ),
                               Text(
                                 order.dateOrderSent != null
@@ -209,7 +209,7 @@ class OrderCardButton extends StatelessWidget {
                                         order.dateOrderSent!)
                                     : "xx:xx",
                                 style: const TextStyle(
-                                  color: Color.fromARGB(255, 0, 0, 0),
+                                  color: Color.fromARGB(255, 255, 255, 255),
                                 ),
                               )
                             ],
@@ -218,7 +218,7 @@ class OrderCardButton extends StatelessWidget {
                         children: [
                           const Icon(
                             Icons.delivery_dining_outlined,
-                            color: Color.fromARGB(255, 0, 0, 0),
+                            color: Color.fromARGB(255, 255, 255, 255),
                           ),
                           Text(
                             order.dateOrderSent != null
@@ -226,7 +226,7 @@ class OrderCardButton extends StatelessWidget {
                                     .format(order.dateOrderSent!)
                                 : "xx:xx",
                             style: const TextStyle(
-                              color: Color.fromARGB(255, 0, 0, 0),
+                              color: Color.fromARGB(255, 255, 255, 255),
                             ),
                           )
                         ],
