@@ -1,3 +1,4 @@
+import 'package:burguer/Core/Container/user.container.dart';
 import 'package:burguer/Model/user.model.dart';
 import 'package:burguer/View/Home/home.view.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -55,7 +56,7 @@ class AuthenticationService {
 
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (context) => const HomeView(),
+        builder: (context) => UserContainer(),
       ),
     );
   }
