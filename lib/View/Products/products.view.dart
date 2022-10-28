@@ -84,16 +84,16 @@ class _ProductAdministrationState extends State<ProductAdministration> {
           unselectedItemColor: Colors.white,
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-              icon: Icon(Icons.icecream_outlined),
-              label: "Açaí",
+              icon: Icon(Icons.fastfood_outlined),
+              label: "Lanche",
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.fastfood_outlined),
-              label: "Salgados",
+              icon: Icon(Icons.icecream_outlined),
+              label: "Sobremesa",
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.local_drink_rounded),
-              label: "Bebidas",
+              label: "Bebida",
             ),
           ],
         ),

@@ -161,20 +161,6 @@ class OrderService {
         .snapshots();
   }
 
-  getMyOrderitems(String uid) async {
-    List<Map<String, dynamic>> orderitems = [];
-    await firestore
-        .collection('orders')
-        .doc(uid)
-        .collection("items")
-        .get()
-        .then((value) {
-      for (var i = 0; i < value.docs.length; i++) {
-        orderitems[i] = value.docs[i].data();
-      }
-    });
-  }
-
   getOrders(status) {
     return firestore
         .collection('orders')

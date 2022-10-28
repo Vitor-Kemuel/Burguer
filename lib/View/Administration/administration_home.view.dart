@@ -69,16 +69,16 @@ class _AdministrationHomeViewState extends State<AdministrationHomeView> {
           unselectedItemColor: Colors.white,
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-              icon: Icon(Icons.fastfood_outlined),
-              label: "Laches",
+              icon: Icon(Icons.new_label_outlined),
+              label: "Novos",
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.icecream_outlined),
-              label: "Sobremesa",
+              icon: Icon(Icons.verified_outlined),
+              label: "Aceitos",
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.local_drink_rounded),
-              label: "Bebidas",
+              icon: Icon(Icons.delivery_dining_outlined),
+              label: "Entregues",
             ),
           ],
         ),
