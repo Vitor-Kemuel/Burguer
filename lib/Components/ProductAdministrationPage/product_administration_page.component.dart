@@ -73,14 +73,6 @@ class _ProductAdministrationPageState extends State<ProductAdministrationPage> {
                                     fontSize: 18,
                                   ),
                                 ),
-                                SizedBox(
-                                  width:
-                                      MediaQuery.of(context).size.width / 1.5,
-                                  child: const Divider(
-                                    color: Color.fromARGB(100, 255, 255, 255),
-                                    height: 2,
-                                  ),
-                                ),
                                 Text(
                                   products[index].note!,
                                   style: const TextStyle(

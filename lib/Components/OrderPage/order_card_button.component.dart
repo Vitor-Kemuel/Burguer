@@ -14,6 +14,9 @@ class OrderCardButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double widthDisplay = Theme.of(context).platform != "android"
+        ? MediaQuery.of(context).size.width / 3.5
+        : MediaQuery.of(context).size.width / 1.3;
     return TextButton(
       onPressed: () => showBarModalBottomSheet(
         context: context,
@@ -29,10 +32,13 @@ class OrderCardButton extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
-                  "id - ${order.id}",
-                  style: const TextStyle(
-                    color: Color.fromARGB(99, 255, 255, 255),
+                SizedBox(
+                  width: widthDisplay,
+                  child: Text(
+                    "id - ${order.id}",
+                    style: const TextStyle(
+                      color: Color.fromARGB(99, 255, 255, 255),
+                    ),
                   ),
                 ),
               ],
@@ -69,7 +75,7 @@ class OrderCardButton extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 SizedBox(
-                  width: MediaQuery.of(context).size.width / 1.3,
+                  width: widthDisplay,
                   child: Text(
                     "${order.address!.publicPlace}, ${order.address!.number}, ${order.address!.district}",
                     style: const TextStyle(
@@ -128,8 +134,8 @@ class OrderCardButton extends StatelessWidget {
                           ),
                           Text(
                             order.dateOrderAccepted != null
-                                ? DateFormat("HH:mm").format(
-                                    order.dateOrderAccepted!)
+                                ? DateFormat("HH:mm")
+                                    .format(order.dateOrderAccepted!)
                                 : "xx:xx",
                             style: const TextStyle(
                               color: Color.fromARGB(255, 0, 248, 0),
@@ -145,8 +151,8 @@ class OrderCardButton extends StatelessWidget {
                           ),
                           Text(
                             order.dateOrderAccepted != null
-                                ? DateFormat("HH:mm").format(
-                                    order.dateOrderAccepted!)
+                                ? DateFormat("HH:mm")
+                                    .format(order.dateOrderAccepted!)
                                 : "xx:xx",
                             style: const TextStyle(
                               color: Color.fromARGB(255, 255, 255, 255),
@@ -188,11 +194,11 @@ class OrderCardButton extends StatelessWidget {
                               ),
                               Text(
                                 order.dateOrderSent != null
-                                    ? DateFormat("HH:mm").format(
-                                        order.dateOrderSent!)
+                                    ? DateFormat("HH:mm")
+                                        .format(order.dateOrderSent!)
                                     : "xx:xx",
                                 style: const TextStyle(
-                                  color: Color.fromARGB(255, 0, 248, 0) ,
+                                  color: Color.fromARGB(255, 0, 248, 0),
                                 ),
                               )
                             ],
@@ -205,8 +211,8 @@ class OrderCardButton extends StatelessWidget {
                               ),
                               Text(
                                 order.dateOrderSent != null
-                                    ? DateFormat("HH:mm").format(
-                                        order.dateOrderSent!)
+                                    ? DateFormat("HH:mm")
+                                        .format(order.dateOrderSent!)
                                     : "xx:xx",
                                 style: const TextStyle(
                                   color: Color.fromARGB(255, 255, 255, 255),

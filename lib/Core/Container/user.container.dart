@@ -4,6 +4,7 @@ import 'package:burguer/Model/user.model.dart';
 import 'package:burguer/Service/authentication.service.dart';
 import 'package:burguer/View/Administration/administration_home.view.dart';
 import 'package:burguer/View/Home/home.view.dart';
+import 'package:burguer/Web/View/Dashboard/dashboard.view.dart';
 import 'package:flutter/material.dart';
 
 class UserContainer extends StatefulWidget {
@@ -30,7 +31,11 @@ class _UserContainerState extends State<UserContainer> {
           if (!snapshot.data!.admin!) {
             return HomeView();
           } else {
-            return AdministrationHomeView();
+            if (Theme.of(context).platform.name == "android") {
+              return AdministrationHomeView();
+            } else {
+              return WebDashboardView();
+            }
           }
         }
 
