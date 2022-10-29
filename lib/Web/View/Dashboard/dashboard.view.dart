@@ -13,7 +13,10 @@ class WebDashboardView extends StatefulWidget {
 }
 
 class _WebDashboardViewState extends State<WebDashboardView> {
-  final List<String> renderPage = ["Pedidos", "Produtos"];
+  final List<Map<String, dynamic>> renderPage = [
+    {"page": OrdersWeb(), "name": "Pedidos"},
+    {"page": ProductWeb(), "name": "Produtos"},
+  ];
   int index = 0;
   @override
   Widget build(BuildContext context) {
@@ -31,7 +34,7 @@ class _WebDashboardViewState extends State<WebDashboardView> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
-                  renderPage[index],
+                  renderPage[index]["name"],
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 26,
@@ -63,11 +66,10 @@ class _WebDashboardViewState extends State<WebDashboardView> {
               ],
             ),
           ),
-          renderPage[index] == "Pedidos" ? OrdersWeb() : Container(),
-          renderPage[index] == "Produtos" ? ProductWeb() : Container(),
+          renderPage[index]["page"],
         ],
       ),
-      floatingActionButton: renderPage[index] == "Produtos"
+      floatingActionButton: renderPage[index]["name"] == "Produtos"
           ? FloatingActionButton(
               backgroundColor: Colors.red,
               child: const Icon(
